@@ -1,0 +1,185 @@
+[gd_scene load_steps=12 format=3 uid="uid://g6h7i8j9k0l1m2"]
+
+[ext_resource type="Script" path="res://scripts_gd/common/validation_base.gd" id="1_validation_base"]
+[ext_resource type="AtlasTexture" path="res://assets/_imported/ui/panels/dialogue_panel.tres" id="2_dialogue"]
+[ext_resource type="AtlasTexture" path="res://assets/_imported/ui/panels/menu_panel.tres" id="3_menu"]
+[ext_resource type="AtlasTexture" path="res://assets/_imported/ui/panels/info_panel.tres" id="4_info"]
+[ext_resource type="AtlasTexture" path="res://assets/_imported/ui/buttons/button_normal.tres" id="5_btn_norm"]
+[ext_resource type="AtlasTexture" path="res://assets/_imported/ui/buttons/button_hover.tres" id="6_btn_hov"]
+[ext_resource type="AtlasTexture" path="res://assets/_imported/ui/buttons/button_pressed.tres" id="7_btn_prs"]
+[ext_resource type="AtlasTexture" path="res://assets/_imported/ui/icons/icon_chess.tres" id="8_icon_chs"]
+[ext_resource type="AtlasTexture" path="res://assets/_imported/ui/icons/icon_inventory.tres" id="9_icon_inv"]
+[ext_resource type="AtlasTexture" path="res://assets/_imported/ui/icons/icon_settings.tres" id="10_icon_set"]
+
+[node name="ValidateUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_validation_base")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.25, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 0.02
+anchor_bottom = 0.08
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 630.0
+offset_bottom = 50.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 28
+text = "UI Elements Validation"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="UIContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="UILabel" type="Label" parent="UIContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "UI Elements (Sliced)"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.8, 0.9, 1, 1)
+
+[node name="PanelsLabel" type="Label" parent="UIContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Panels"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="PanelsContainer" type="HBoxContainer" parent="UIContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="DialoguePanel" type="TextureRect" parent="UIContainer/PanelsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(256, 64)
+expand_mode = 1
+stretch_mode = 5
+texture = ExtResource("2_dialogue")
+
+[node name="MenuPanel" type="TextureRect" parent="UIContainer/PanelsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 150)
+expand_mode = 1
+stretch_mode = 5
+texture = ExtResource("3_menu")
+
+[node name="InfoPanel" type="TextureRect" parent="UIContainer/PanelsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 100)
+expand_mode = 1
+stretch_mode = 5
+texture = ExtResource("4_info")
+
+[node name="ButtonsLabel" type="Label" parent="UIContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Buttons"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="UIContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonNormal" type="TextureRect" parent="UIContainer/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(100, 32)
+expand_mode = 1
+stretch_mode = 5
+texture = ExtResource("5_btn_norm")
+
+[node name="ButtonHover" type="TextureRect" parent="UIContainer/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(100, 32)
+expand_mode = 1
+stretch_mode = 5
+texture = ExtResource("6_btn_hov")
+
+[node name="ButtonPressed" type="TextureRect" parent="UIContainer/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(100, 32)
+expand_mode = 1
+stretch_mode = 5
+texture = ExtResource("7_btn_prs")
+
+[node name="IconsLabel" type="Label" parent="UIContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Icons"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="IconsContainer" type="HBoxContainer" parent="UIContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="IconChess" type="Sprite2D" parent="UIContainer/IconsContainer"]
+position = Vector2(0, 32)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("8_icon_chs")
+
+[node name="IconInventory" type="Sprite2D" parent="UIContainer/IconsContainer"]
+position = Vector2(64, 32)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_icon_inv")
+
+[node name="IconSettings" type="Sprite2D" parent="UIContainer/IconsContainer"]
+position = Vector2(128, 32)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("10_icon_set")
+
+[node name="InfoLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -80.0
+offset_right = 630.0
+offset_bottom = -40.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 14
+text = "UI elements are now sliced and ready to use. Panels, buttons, and icons are available as individual resources."
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -40.0
+offset_right = 190.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 18
+text = "Back to Hub"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

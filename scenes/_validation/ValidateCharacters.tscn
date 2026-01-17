@@ -1,0 +1,170 @@
+[gd_scene load_steps=10 format=3 uid="uid://c30we4lxi2iqv"]
+
+[ext_resource type="Script" uid="uid://dhsvkvyssabnh" path="res://scripts_gd/common/validation_base.gd" id="1_validation_base"]
+[ext_resource type="SpriteFrames" uid="uid://mg0soy5bnyun" path="res://assets/_imported/player_frames.tres" id="2_player"]
+[ext_resource type="SpriteFrames" path="res://assets/_imported/npc1_frames.tres" id="3_npc1"]
+[ext_resource type="SpriteFrames" path="res://assets/_imported/npc2_frames.tres" id="4_npc2"]
+[ext_resource type="SpriteFrames" path="res://assets/_imported/npc3_frames.tres" id="5_npc3"]
+[ext_resource type="Script" path="res://scripts_gd/common/animation_controller.gd" id="6_anim_controller"]
+
+[node name="ValidateCharacters" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_validation_base")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.15, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.02
+anchor_bottom = 0.08
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 630.0
+offset_bottom = 50.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Characters Validation - Player + NPCs"
+
+[node name="CharactersContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -150.0
+offset_right = 400.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayerContainer" type="VBoxContainer" parent="CharactersContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="PlayerLabel" type="Label" parent="CharactersContainer/PlayerContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Player"
+horizontal_alignment = 1
+
+[node name="PlayerSpriteLayer" type="CanvasLayer" parent="CharactersContainer/PlayerContainer"]
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="CharactersContainer/PlayerContainer/PlayerSpriteLayer"]
+position = Vector2(100, 100)
+scale = Vector2(0.25, 0.25)
+sprite_frames = ExtResource("2_player")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AnimationController" type="Node" parent="CharactersContainer/PlayerContainer/PlayerSpriteLayer/PlayerSprite"]
+script = ExtResource("6_anim_controller")
+animated_sprite = NodePath("..")
+animation_names = PackedStringArray("idle", "walk_down", "walk_up", "walk_right", "walk_left")
+time_per_animation = 2.0
+
+[node name="NPCContainer" type="VBoxContainer" parent="CharactersContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NPCLabel" type="Label" parent="CharactersContainer/NPCContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "NPCs"
+horizontal_alignment = 1
+
+[node name="NPCSpritesContainer" type="HBoxContainer" parent="CharactersContainer/NPCContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="NPC1Layer" type="CanvasLayer" parent="CharactersContainer/NPCContainer/NPCSpritesContainer"]
+
+[node name="NPC1" type="AnimatedSprite2D" parent="CharactersContainer/NPCContainer/NPCSpritesContainer/NPC1Layer"]
+position = Vector2(50, 100)
+scale = Vector2(0.25, 0.25)
+sprite_frames = ExtResource("3_npc1")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AnimationController" type="Node" parent="CharactersContainer/NPCContainer/NPCSpritesContainer/NPC1Layer/NPC1"]
+script = ExtResource("6_anim_controller")
+animated_sprite = NodePath("..")
+animation_names = PackedStringArray("idle", "walk_down", "walk_up", "walk_right", "walk_left")
+time_per_animation = 2.0
+
+[node name="NPC2Layer" type="CanvasLayer" parent="CharactersContainer/NPCContainer/NPCSpritesContainer"]
+
+[node name="NPC2" type="AnimatedSprite2D" parent="CharactersContainer/NPCContainer/NPCSpritesContainer/NPC2Layer"]
+position = Vector2(50, 100)
+scale = Vector2(0.25, 0.25)
+sprite_frames = ExtResource("4_npc2")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AnimationController" type="Node" parent="CharactersContainer/NPCContainer/NPCSpritesContainer/NPC2Layer/NPC2"]
+script = ExtResource("6_anim_controller")
+animated_sprite = NodePath("..")
+animation_names = PackedStringArray("idle", "walk_down", "walk_up", "walk_right", "walk_left")
+time_per_animation = 2.0
+
+[node name="NPC3Layer" type="CanvasLayer" parent="CharactersContainer/NPCContainer/NPCSpritesContainer"]
+
+[node name="NPC3" type="AnimatedSprite2D" parent="CharactersContainer/NPCContainer/NPCSpritesContainer/NPC3Layer"]
+position = Vector2(50, 100)
+scale = Vector2(0.25, 0.25)
+sprite_frames = ExtResource("5_npc3")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AnimationController" type="Node" parent="CharactersContainer/NPCContainer/NPCSpritesContainer/NPC3Layer/NPC3"]
+script = ExtResource("6_anim_controller")
+animated_sprite = NodePath("..")
+animation_names = PackedStringArray("idle", "walk_down", "walk_up", "walk_right", "walk_left")
+time_per_animation = 2.0
+
+[node name="InfoLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -80.0
+offset_right = 630.0
+offset_bottom = -40.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 14
+text = "Animations will cycle automatically: idle → walk_down → walk_up → walk_right → walk_left → repeat"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -40.0
+offset_right = 190.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 18
+text = "Back to Hub"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

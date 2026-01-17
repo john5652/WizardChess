@@ -10,8 +10,9 @@ config_version=5
 
 [application]
 
-config/name="WizardChess"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/name="Wizard Chess"
+run/main_scene="res://scenes/_validation/ValidationHub.tscn"
+config/features=PackedStringArray("4.5")
 config/icon="res://icon.svg"
 
 [display]

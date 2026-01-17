@@ -1,0 +1,97 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyxw86cioa1yq"]
+
+[ext_resource type="Script" uid="uid://c6qkwytpmps2" path="res://scripts_gd/common/validation_hub.gd" id="1_validation_hub"]
+
+[node name="ValidationHub" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_validation_hub")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.15, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.2
+offset_left = -200.0
+offset_top = -20.0
+offset_right = 200.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 48
+text = "Asset Validation Hub"
+horizontal_alignment = 1
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.8
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InteriorButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Interior Tileset"
+
+[node name="ExteriorButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Exterior Tileset"
+
+[node name="CharactersButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Characters"
+
+[node name="ChessButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Chess"
+
+[node name="UIButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "UI Elements"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -60.0
+offset_right = 200.0
+offset_bottom = -20.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "Back to Hub"
+
+[connection signal="pressed" from="ButtonContainer/InteriorButton" to="." method="_on_interior_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/ExteriorButton" to="." method="_on_exterior_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/CharactersButton" to="." method="_on_characters_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/ChessButton" to="." method="_on_chess_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/UIButton" to="." method="_on_ui_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3e4f5g6h7i8j9"]
+
+[ext_resource type="Script" path="res://scripts_gd/common/validation_base.gd" id="1_validation_base"]
+[ext_resource type="TileSet" path="res://assets/_imported/exterior_tileset.tres" id="2_exterior_tileset"]
+[ext_resource type="Script" path="res://scripts_gd/common/tilemap_preview.gd" id="3_tilemap_preview"]
+
+[node name="ValidateExterior" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_validation_base")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.15, 0.2, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 0.02
+anchor_bottom = 0.08
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 630.0
+offset_bottom = 50.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 28
+text = "Exterior Tileset Validation"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="TileMapContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TileMap" type="TileMap" parent="TileMapContainer"]
+script = ExtResource("3_tilemap_preview")
+tile_set = ExtResource("2_exterior_tileset")
+format = 2
+layer_0/name = "Exterior Tiles"
+layer_0/enabled = true
+layer_0/modulate = Color(1, 1, 1, 1)
+layer_0/y_sort_enabled = false
+layer_0/y_sort_origin = 0
+layer_0/z_index = 0
+
+[node name="InfoLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -80.0
+offset_right = 630.0
+offset_bottom = -40.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 14
+text = "Individual tiles displayed in grid. Each tile is 32x32 pixels and can be placed in the world."
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -40.0
+offset_right = 190.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 18
+text = "Back to Hub"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
